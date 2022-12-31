@@ -34,23 +34,12 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 175,
+                height: 230,
+                width: 230,
                 child: Image.asset(
-                  'assets/images/Stet.jpeg',
+                  'assets/images/Logo.png',
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                'TOSERBA',
-                style: TextStyle(
-                  fontSize: 40,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w800,
-                  color: Color(0xffC84C55),
-                ),
-              )
             ],
           ),
         ),

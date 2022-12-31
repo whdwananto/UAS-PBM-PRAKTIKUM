@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:projectuas/Page/detailproduct.dart';
+import 'package:projectuas/Page/profilepage.dart';
 import 'package:projectuas/Service%20Api/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,14 +19,36 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             const DrawerHeader(
-              child: Text('My App'),
+              // ignore: sort_child_properties_last
+              child: Text(
+                'My App',
+                style: TextStyle(
+                  fontSize: 25,
+                ),
+              ),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.red,
               ),
             ),
             ListTile(
-              title: const Text('Keluar'),
+              leading: ClipOval(
+                child: Image.asset('assets/images/profile.gif'),
+              ),
+              title: const Text(
+                'My Account',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return const ProfilePage();
+                  },
+                ));
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.keyboard_arrow_left),
+              title: const Text('Keluar'),
               onTap: () async {
                 final prefs = await SharedPreferences.getInstance();
                 prefs.setBool('isLoggedIn', false);
@@ -33,20 +57,16 @@ class HomePage extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => const LoginPage()));
               },
             ),
-            ListTile(
-              title: const Text('Settings'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
           ],
         ),
       ),
       appBar: AppBar(
-        title: const Text('HomePage'),
+        elevation: 0,
+        backgroundColor: Colors.red,
+        title: const Text(
+          'HomePage',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: SingleChildScrollView(
         child: FutureBuilder(
@@ -78,7 +98,7 @@ class HomePage extends StatelessWidget {
                       ));
                     },
                     child: Card(
-                      elevation: 30,
+                      elevation: 10,
                       shadowColor: Colors.black,
                       child: Container(
                         padding: const EdgeInsets.all(8),
@@ -102,6 +122,11 @@ class HomePage extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 snapshot.data!.products[index].title,
+                                style: GoogleFonts.inder(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                ),
                                 textAlign: TextAlign.start,
                               ),
                             ),
@@ -109,7 +134,12 @@ class HomePage extends StatelessWidget {
                               children: [
                                 const Icon(Icons.star, color: Colors.orange),
                                 Text(
-                                    "${snapshot.data!.products[index].rating}"),
+                                  "${snapshot.data!.products[index].rating}",
+                                  style: GoogleFonts.inder(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                  ),
+                                ),
                               ],
                             )
                           ],
@@ -120,7 +150,9 @@ class HomePage extends StatelessWidget {
                 },
               );
             } else {
-              return Center(child: const CircularProgressIndicator());
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
           },
         ),

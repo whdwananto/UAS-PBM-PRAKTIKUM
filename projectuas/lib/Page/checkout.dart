@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:projectuas/Page/listproduct.dart';
-import 'package:projectuas/Model/product_model.dart';
 
 enum MetodeBayar { bayarditempat, indoalfa, viabank }
 
@@ -10,14 +9,18 @@ enum PilihanKurir { sicepat, tiki, jne }
 class PesanBayar extends StatefulWidget {
   // final produk barang;
   // const PesanBayar({super.key, required this.barang});
+  // ignore: non_constant_identifier_names, prefer_typing_uninitialized_variables
   final Product;
+  // ignore: non_constant_identifier_names
   const PesanBayar({super.key, required this.Product});
 
   @override
+  // ignore: no_logic_in_create_state
   State<PesanBayar> createState() => _PesanBayarState(Product);
 }
 
 class _PesanBayarState extends State<PesanBayar> {
+  // ignore: non_constant_identifier_names, prefer_typing_uninitialized_variables
   final Product;
   _PesanBayarState(this.Product);
   MetodeBayar? _character = MetodeBayar.bayarditempat;
@@ -28,13 +31,13 @@ class _PesanBayarState extends State<PesanBayar> {
       appBar: AppBar(
         // backgroundColor: Colors.teal,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Check Out",
           style: TextStyle(color: Colors.black),
         ),
         elevation: 0,
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -57,7 +60,7 @@ class _PesanBayarState extends State<PesanBayar> {
                     height: 100,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Flexible(
@@ -73,7 +76,7 @@ class _PesanBayarState extends State<PesanBayar> {
                             // overflow: TextOverflow.ellipsis,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Text(
@@ -90,9 +93,9 @@ class _PesanBayarState extends State<PesanBayar> {
             ),
           ),
           const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: const Text(
+          const Padding(
+            padding: EdgeInsets.only(left: 10),
+            child: Text(
               'Alamat',
               style: TextStyle(
                   color: Colors.black87,
@@ -117,16 +120,16 @@ class _PesanBayarState extends State<PesanBayar> {
                   prefixIcon: Icon(
                     Icons.location_on,
                     // color: Color(0xff5ac18e),
-                    color: Colors.blue,
+                    color: Colors.red,
                   ),
                   hintText: 'masukan alamat',
                   hintStyle: TextStyle(color: Colors.black38)),
             ),
           ),
           const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: const Text(
+          const Padding(
+            padding: EdgeInsets.only(left: 10),
+            child: Text(
               'No Handphone',
               style: TextStyle(
                   color: Colors.black87,
@@ -150,19 +153,18 @@ class _PesanBayarState extends State<PesanBayar> {
                   contentPadding: EdgeInsets.only(top: 15),
                   prefixIcon: Icon(
                     Icons.phone,
-                    // color: Color(0xff5ac18e),
-                    color: Colors.blue,
+                    color: Colors.red,
                   ),
                   hintText: 'masukan nomor handphone',
                   hintStyle: TextStyle(color: Colors.black38)),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: const Text(
+          const Padding(
+            padding: EdgeInsets.only(left: 10),
+            child: Text(
               'Jumlah Pembelian',
               style: TextStyle(
                   color: Colors.black87,
@@ -187,18 +189,18 @@ class _PesanBayarState extends State<PesanBayar> {
                   prefixIcon: Icon(
                     Icons.shopping_bag,
                     // color: Color(0xff5ac18e),
-                    color: Colors.blue,
+                    color: Colors.red,
                   ),
                   hintText: 'masukan jumlah pembelian',
                   hintStyle: TextStyle(color: Colors.black38)),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10, bottom: 8),
-            child: const Text(
+          const Padding(
+            padding: EdgeInsets.only(left: 10, bottom: 8),
+            child: Text(
               'Metode Pembayaran',
               style: TextStyle(
                   color: Colors.black87,
@@ -213,6 +215,7 @@ class _PesanBayarState extends State<PesanBayar> {
                 ListTile(
                   title: const Text('Alfamart/Indomart'),
                   leading: Radio<MetodeBayar>(
+                    activeColor: Colors.red,
                     value: MetodeBayar.indoalfa,
                     groupValue: _character,
                     onChanged: (MetodeBayar? value) {
@@ -225,6 +228,7 @@ class _PesanBayarState extends State<PesanBayar> {
                 ListTile(
                   title: const Text('Bayar ditempat'),
                   leading: Radio<MetodeBayar>(
+                    activeColor: Colors.red,
                     value: MetodeBayar.bayarditempat,
                     groupValue: _character,
                     onChanged: (MetodeBayar? value) {
@@ -237,6 +241,7 @@ class _PesanBayarState extends State<PesanBayar> {
                 ListTile(
                   title: const Text('Transfer Via Bank'),
                   leading: Radio<MetodeBayar>(
+                    activeColor: Colors.red,
                     value: MetodeBayar.viabank,
                     groupValue: _character,
                     onChanged: (MetodeBayar? value) {
@@ -249,9 +254,9 @@ class _PesanBayarState extends State<PesanBayar> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10, bottom: 8),
-            child: const Text(
+          const Padding(
+            padding: EdgeInsets.only(left: 10, bottom: 8),
+            child: Text(
               'Pilihan Kurir',
               style: TextStyle(
                   color: Colors.black87,
@@ -266,6 +271,7 @@ class _PesanBayarState extends State<PesanBayar> {
                 ListTile(
                   title: const Text('SiCepat'),
                   leading: Radio<PilihanKurir>(
+                    activeColor: Colors.red,
                     value: PilihanKurir.sicepat,
                     groupValue: _char,
                     onChanged: (PilihanKurir? value) {
@@ -278,6 +284,7 @@ class _PesanBayarState extends State<PesanBayar> {
                 ListTile(
                   title: const Text('TIKI'),
                   leading: Radio<PilihanKurir>(
+                    activeColor: Colors.red,
                     value: PilihanKurir.tiki,
                     groupValue: _char,
                     onChanged: (PilihanKurir? value) {
@@ -290,6 +297,7 @@ class _PesanBayarState extends State<PesanBayar> {
                 ListTile(
                   title: const Text('JNE'),
                   leading: Radio<PilihanKurir>(
+                    activeColor: Colors.red,
                     value: PilihanKurir.jne,
                     groupValue: _char,
                     onChanged: (PilihanKurir? value) {
@@ -310,6 +318,7 @@ class _PesanBayarState extends State<PesanBayar> {
             onPressed: () {
               CoolAlert.show(
                 context: context,
+                confirmBtnColor: Colors.red,
                 type: CoolAlertType.success,
                 text: "Your transaction was successful!",
                 onConfirmBtnTap: () {
@@ -319,16 +328,13 @@ class _PesanBayarState extends State<PesanBayar> {
               );
             },
             style: ElevatedButton.styleFrom(
-                // backgroundColor: Colors.white,
+                backgroundColor: Colors.red,
                 padding: const EdgeInsets.all(15),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15))),
             child: const Text(
               'Pesan Sekarang',
-              style: TextStyle(
-                  // color: Color(0xff5ac18e),
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             )),
       ),
     );

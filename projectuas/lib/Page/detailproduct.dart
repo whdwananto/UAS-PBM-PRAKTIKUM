@@ -4,7 +4,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:projectuas/Page/checkout.dart';
 
 class DetailProducts extends StatelessWidget {
+  // ignore: non_constant_identifier_names, prefer_typing_uninitialized_variables
   final Product;
+  // ignore: non_constant_identifier_names
   const DetailProducts({super.key, this.Product});
 
   @override
@@ -32,9 +34,9 @@ class DetailProducts extends StatelessWidget {
         backgroundColor: Colors.white,
         title: Text(
           Product.title,
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
         ),
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: SingleChildScrollView(
         child: Expanded(
@@ -69,14 +71,11 @@ class DetailProducts extends StatelessWidget {
                           Expanded(
                             child: Text(
                               Product.title,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.w600),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          // const Spacer(
-                          //   flex: 5,
-                          // ),
                           IconButton(
                               onPressed: () {},
                               icon: const Icon(Icons.bookmark_border_outlined))
@@ -85,37 +84,17 @@ class DetailProducts extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "\$ ${Product.price}",
-                            style: TextStyle(fontSize: 16),
+                            "\$ ${Product.price} Beli Sekarang Diskon ${Product.discountPercentage}%",
+                            style: const TextStyle(fontSize: 16),
                           ),
                         ],
                       ),
-                      // Row(
-                      //   children: [
-                      //     RatingBar(
-                      //       initialRating: rating,
-                      //       direction: Axis.horizontal,
-                      //       allowHalfRating: true,
-                      //       ignoreGestures: true,
-                      //       itemCount: 5,
-                      //       ratingWidget: RatingWidget(
-                      //           full: const Icon(Icons.star,
-                      //               color: Colors.orange),
-                      //           half: const Icon(
-                      //             Icons.star_half,
-                      //             color: Colors.orange,
-                      //           ),
-                      //           empty: const Icon(
-                      //             Icons.star_outline,
-                      //             color: Colors.orange,
-                      //           )),
-                      //       onRatingUpdate: (double value) {
-                      //         rating;
-                      //       },
-                      //     ),
-                      //     Text('${Product.rating}')
-                      //   ],
-                      // ),
+                      Row(
+                        children: [
+                          const Text("Stock : "),
+                          Text("${Product.stock}"),
+                        ],
+                      ),
                       Container(
                         height: 10,
                       ),
@@ -123,7 +102,7 @@ class DetailProducts extends StatelessWidget {
                         style: TextButton.styleFrom(
                           padding: const EdgeInsets.all(20),
                           minimumSize: const Size(double.infinity, 30),
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Colors.red,
                         ),
                         onPressed: () {
                           Navigator.push(
@@ -135,23 +114,20 @@ class DetailProducts extends StatelessWidget {
                         },
                         child: const Text(
                           'Pesan Sekarang',
-                          // style: TextStyle(color: Colors.black),
                           style: TextStyle(color: Colors.white),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  // height: 80,
                   width: double.infinity,
-                  // color: Colors.grey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Row(
-                        children: [
+                        children: const [
                           Text(
                             "Ulasan",
                             style: TextStyle(fontWeight: FontWeight.bold),
@@ -199,7 +175,7 @@ class DetailProducts extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Row(
-                        children: [
+                        children: const [
                           Text(
                             "Keterangan",
                             style: TextStyle(fontWeight: FontWeight.bold),
@@ -222,22 +198,19 @@ class DetailProducts extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Row(
-                        children: [
-                          const Text(
+                        children: const [
+                          Text(
                             "Detail Produk",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
-                      // Container(
-                      //   height: 10,
-                      // ),
                       Container(
                         height: 5,
                       ),
                       Row(
                         children: [
-                          const Text("Kategori: "),
+                          const Text("Kategori : "),
                           Text(Product.category),
                         ],
                       ),
@@ -246,19 +219,13 @@ class DetailProducts extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          const Text("Merek: "),
+                          const Text("Merek : "),
                           Text(Product.brand),
                         ],
                       ),
                       Container(
                         height: 5,
                       ),
-                      // Row(
-                      //   children: [
-                      //     const Text("Harga: "),
-                      //     Text(Product.price.toString()),
-                      //   ],
-                      // ),
                     ],
                   ),
                 ),
